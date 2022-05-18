@@ -1,0 +1,17 @@
+@use "../../styles/colors";
+@use "../../styles/mixins";
+
+.mainNavContents {
+  display: flex;
+  justify-content: space-between;
+  flex: 1;
+  .nav {
+    @include mixins.nav;
+    padding-left: 10%;
+    font-weight: 600;
+    align-self: center;
+    a {
+      color: colors.$gray;
+    }
+  }
+}

@@ -1,0 +1,12 @@
+@use "../../styles/colors";
+
+.cart {
+  background-color: colors.$lightGray;
+  color: black;
+  display: flex;
+  padding: 0 1rem;
+  align-items: center;
+  .cartCount {
+    padding: 0 1rem;
+  }
+}
