@@ -1,0 +1,49 @@
+@use "../../styles/colors";
+
+.inputGroup {
+  padding-top: 1.6rem;
+  padding-bottom: 2.8rem;
+
+  position: relative;
+  .inputLabel {
+    display: block;
+    position: absolute;
+    top: 35%;
+    transition: all 0.35s;
+    font-weight: 600;
+  }
+  .inputText {
+    font-size: 1.6rem;
+    width: 100%;
+    height: 40px;
+    border: none;
+    border-bottom: 1px solid;
+    &:focus {
+      border: none;
+      outline: none;
+      border-bottom: 1px solid colors.$blue;
+      & ~ .inputLabel {
+        color: colors.$blue;
+      }
+    }
+    &.hasError {
+      border-bottom: 1px solid colors.$red;
+      & ~ .inputLabel {
+        color: colors.$red;
+      }
+    }
+    &.hasValue,
+    &:focus {
+      & ~ .inputLabel {
+        font-size: 1.2rem;
+        top: 0;
+      }
+    }
+  }
+  .errorText {
+    position: absolute;
+    font-size: 1rem;
+    padding-top: 0.4rem;
+    color: colors.$red;
+  }
+}

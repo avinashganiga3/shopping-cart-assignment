@@ -15,6 +15,7 @@ const App = () => {
           <Route path="products" element={<Products />} />
           <Route path="register" element={<SignUp />} />
           <Route path="sign-in" element={<SignIn />} />
+          {/* Redirect */}
         </Route>
       </Routes>
     </div>

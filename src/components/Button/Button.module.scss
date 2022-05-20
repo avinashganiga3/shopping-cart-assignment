@@ -1,0 +1,15 @@
+@use "../../styles/colors";
+.button {
+  width: 100%;
+  border: none;
+  padding: 1.2rem;
+  font-size: 1.6rem;
+  border-radius: 4px;
+  cursor: pointer;
+  color: colors.$white;
+  background: colors.$darkRed;
+  &:hover {
+    background: colors.$mGray;
+    color: colors.$black;
+  }
+}
