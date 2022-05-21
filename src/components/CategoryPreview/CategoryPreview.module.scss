@@ -1,0 +1,17 @@
+.category {
+  display: flex;
+  padding: 2rem 0;
+  .categoryImage {
+    max-width: 30%;
+    &.imageLeft {
+      order: 2;
+    }
+  }
+  .categoryDetails {
+    flex: 1;
+    text-align: center;
+  }
+  .button {
+    margin-top: 2rem;
+  }
+}

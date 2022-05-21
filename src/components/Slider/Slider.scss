@@ -1,0 +1,14 @@
+@import "swiper/css";
+@import "swiper/css/navigation";
+@import "swiper/css/pagination";
+
+.swiperSlider {
+  .swiperImage {
+    width: 100%;
+    height: auto;
+  }
+  .swiper-pagination {
+    bottom: 30px;
+    --swiper-pagination-bullet-size: 5px;
+  }
+}

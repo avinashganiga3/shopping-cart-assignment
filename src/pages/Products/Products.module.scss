@@ -1,0 +1,13 @@
+.productsPage {
+  display: flex;
+  .categories {
+    min-width: 20%;
+  }
+  .products {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 1.6rem;
+    flex: 1;
+    padding: 0 0 1.6rem 1.6rem;
+  }
+}

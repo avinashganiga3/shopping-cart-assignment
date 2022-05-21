@@ -10,8 +10,10 @@
     padding-left: 10%;
     font-weight: 600;
     align-self: center;
-    a {
+    li a {
       color: colors.$gray;
+      margin-left: 0;
+      margin-right: 3rem;
     }
   }
 }

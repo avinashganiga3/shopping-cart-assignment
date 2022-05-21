@@ -6,13 +6,15 @@ const SignIn = () => {
     console.log("login", value);
   };
   return (
-    <AuthPageLayout
-      initialFormData={initialFormData}
-      title="SignUp"
-      subTitle="Get access to Orders, Whislists and Recommendations "
-      buttonTitle="Login"
-      onSubmit={submitHandler}
-    />
+    <main>
+      <AuthPageLayout
+        initialFormData={initialFormData}
+        title="SignUp"
+        subTitle="Get access to Orders, Whislists and Recommendations "
+        buttonTitle="Login"
+        onSubmit={submitHandler}
+      />
+    </main>
   );
 };
 

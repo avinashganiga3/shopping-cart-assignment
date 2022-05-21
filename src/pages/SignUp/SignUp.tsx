@@ -7,13 +7,15 @@ const SignUp = () => {
   };
 
   return (
-    <AuthPageLayout
-      initialFormData={initialFormData}
-      title="SignUp"
-      subTitle="We do not share your personal details with anyone"
-      buttonTitle="SignUp"
-      onSubmit={submitHandler}
-    />
+    <main>
+      <AuthPageLayout
+        initialFormData={initialFormData}
+        title="SignUp"
+        subTitle="We do not share your personal details with anyone"
+        buttonTitle="SignUp"
+        onSubmit={submitHandler}
+      />
+    </main>
   );
 };
 

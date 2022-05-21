@@ -1,0 +1,21 @@
+.separator {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+  margin-bottom: 5rem;
+  border: none;
+  width: 60%;
+  height: 50px;
+  box-shadow: 0 20px 20px -20px rgba(0, 0, 0, 0.25);
+  margin: -50px auto 5rem;
+}
+
+.category {
+  ::before {
+    content: "";
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+    margin-bottom: 5rem;
+    width: 60%;
+    height: 50px;
+    box-shadow: 0 20px 20px -20px rgba(0, 0, 0, 0.25);
+    margin: -50px auto 5rem;
+  }
+}

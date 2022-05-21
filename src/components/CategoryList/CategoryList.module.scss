@@ -1,0 +1,16 @@
+@use "../../styles/colors";
+.list {
+  display: flex;
+  flex-direction: column;
+  background: colors.$dGray;
+  list-style-type: none;
+  margin: 0;
+  padding-left: 0.5rem;
+  height: 100%;
+  li {
+    padding: 1rem 2rem;
+    border-bottom: 1px solid colors.$border;
+    color: colors.$gray;
+    cursor: pointer;
+  }
+}
