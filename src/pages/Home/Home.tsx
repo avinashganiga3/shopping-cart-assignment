@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import Slider from "../../components/Slider";
+import cn from "classnames";
+import Slider, { BannerItems } from "../../components/Slider";
 import CategoryPreview from "../../components/CategoryPreview";
 import { CategoryT } from "../../types";
 import { getData } from "../../api";
@@ -8,14 +9,14 @@ import { apiUrls } from "../../api/constants";
 import styles from "./Home.module.scss";
 
 const Home = () => {
-  const [banners, setBanner] = useState([]);
+  const [banners, setBanner] = useState<BannerItems[]>([]);
   const [categories, setCategories] = useState<CategoryT[]>([]);
 
   useEffect(() => {
     const callAPI = async () => {
       try {
-        const res = await getData(apiUrls.banners);
-        const cat = await getData(apiUrls.categories);
+        const res = await getData<BannerItems[]>(apiUrls.banners);
+        const cat: any = await getData<CategoryT[]>(apiUrls.categories);
         setCategories(cat);
         setBanner(res);
       } catch (error) {
@@ -26,15 +27,12 @@ const Home = () => {
   }, []);
 
   return (
-    <main className="container">
+    <main className={cn(styles.homePage, "container")}>
       <Slider items={banners} />
       <hr className={styles.separator} />
       {categories.map((category, index) => (
-        <section key={category.key}>
+        <section key={category.key} className={styles.category}>
           <CategoryPreview category={category} index={index} />
-          {index !== categories.length - 1 && (
-            <hr className={styles.separator} />
-          )}
         </section>
       ))}
     </main>

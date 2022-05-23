@@ -6,11 +6,12 @@
     inset 0 -1px 0 rgba(0, 0, 0, 0.15);
   padding-top: 0.8rem;
 }
-.header {
+div.header {
   display: flex;
+  padding: 0;
   .logo {
     display: block;
-    width: 190px;
+    width: 100px;
     height: auto;
     margin-bottom: 0.8rem;
   }
@@ -19,5 +20,11 @@
     flex-direction: column;
     flex: 1;
     line-height: initial;
+  }
+  @include mixins.sm {
+    padding: 0 1.6rem;
+    .logo {
+      width: 190px;
+    }
   }
 }

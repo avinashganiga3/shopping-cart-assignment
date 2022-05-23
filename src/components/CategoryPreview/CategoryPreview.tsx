@@ -10,7 +10,7 @@ export type CategoryPreviewProps = {
 };
 
 const CategoryPreview: FC<CategoryPreviewProps> = ({ category, index = 0 }) => {
-  const { description, imageUrl, name, key } = category;
+  const { description, imageUrl, name, key, id } = category;
   return (
     <div className={styles.category}>
       {imageUrl && (
@@ -23,12 +23,12 @@ const CategoryPreview: FC<CategoryPreviewProps> = ({ category, index = 0 }) => {
         />
       )}
       <div className={styles.categoryDetails}>
-        <h2>{name}</h2>
-        <p>{description}</p>
+        <h2 className={styles.title}>{name}</h2>
+        <p className={styles.desc}>{description}</p>
         <LinkButton
           className={styles.button}
           tabIndex={-1}
-          to={`/products?category=${key}`}
+          to={`/products?category=${id}`}
         >{`Explore ${key}`}</LinkButton>
       </div>
     </div>

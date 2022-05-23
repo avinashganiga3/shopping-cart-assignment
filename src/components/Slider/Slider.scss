@@ -1,14 +1,45 @@
+@use "../../styles/mixins";
+@use "../../styles/colors";
 @import "swiper/css";
 @import "swiper/css/navigation";
 @import "swiper/css/pagination";
 
 .swiperSlider {
+  position: relative;
   .swiperImage {
     width: 100%;
     height: auto;
   }
   .swiper-pagination {
-    bottom: 30px;
+    bottom: 0;
     --swiper-pagination-bullet-size: 5px;
+    @include mixins.lg {
+      bottom: 30px;
+    }
+  }
+
+  %navigation-buttons {
+    color: colors.$white;
+    background: rgba(black, 0.5);
+    padding: 0 10px;
+    width: auto;
+    height: 30px;
+    cursor: pointer;
+    display: none;
+    &::after {
+      content: "";
+    }
+    @include mixins.lg {
+      display: flex;
+    }
+  }
+  .swiper-button-prev {
+    @extend %navigation-buttons;
+    left: 0;
+  }
+
+  .swiper-button-next {
+    @extend %navigation-buttons;
+    right: 0;
   }
 }

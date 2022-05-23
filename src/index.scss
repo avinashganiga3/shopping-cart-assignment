@@ -1,4 +1,6 @@
+@use "./styles/mixins";
 @import-normalize;
+
 * {
   box-sizing: border-box;
 }
@@ -17,9 +19,28 @@ h2,
 h3 {
   font-weight: 600;
 }
+button {
+  font-family: "Dosis", sans-serif;
+}
 
 .container {
-  max-width: 1320px;
+  max-width: 100%;
   padding: 0 1.6rem;
   margin: 0 auto;
+
+  @include mixins.sm {
+    max-width: 540px;
+  }
+  @include mixins.md {
+    max-width: 960px;
+  }
+  @include mixins.lg {
+    max-width: 960px;
+  }
+  @include mixins.xl {
+    max-width: 1140px;
+  }
+  @include mixins.xxl {
+    width: 1320px;
+  }
 }

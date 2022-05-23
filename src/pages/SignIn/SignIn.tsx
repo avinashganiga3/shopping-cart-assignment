@@ -1,10 +1,21 @@
+import { useNavigate } from "react-router-dom";
+import useUserContext from "../../context/UserContext/useUserContext";
 import { StringObject } from "../../types";
 import AuthPageLayout from "../AuthPageLayout";
 
+export type SignInT = {
+  email: string;
+  password: string;
+};
 const SignIn = () => {
+  const { signInUser } = useUserContext();
+  const navigate = useNavigate();
   const submitHandler = (value: StringObject) => {
-    console.log("login", value);
+    console.log("sign in", value);
+    signInUser();
+    navigate("/");
   };
+
   return (
     <main>
       <AuthPageLayout

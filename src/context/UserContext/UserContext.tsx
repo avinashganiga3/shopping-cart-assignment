@@ -1,19 +1,21 @@
-import { createContext, useMemo, useState } from "react";
+import { FC } from "react";
+import { createContext, useMemo, useReducer } from "react";
+import userReducer from "./userReducer";
+import { UserProviderProps, UserState, Dispatch } from "./types";
 
-export const UserContext = createContext({});
+export const UserContext = createContext<
+  { state: UserState; dispatch: Dispatch } | undefined
+>(undefined);
 
-export const UserProvider = ({ children }: any) => {
-  const [state, setState] = useState(1);
+const initialState = {
+  firstName: "",
+  lastName: "",
+  isLoggedIn: false,
+};
 
-  const changeState = () => {
-    setState((p) => p + 1);
-  };
-  const value = useMemo(
-    () => ({
-      state,
-      changeState,
-    }),
-    [state]
-  );
+export const UserProvider: FC<UserProviderProps> = ({ children }) => {
+  const [state, dispatch] = useReducer(userReducer, initialState);
+
+  const value = useMemo(() => ({ state, dispatch }), [state]);
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 };

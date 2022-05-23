@@ -1,8 +1,18 @@
 @use "../../styles/colors";
+@use "../../styles/mixins";
+
 .footer {
   background: colors.$dGray;
+  font-size: 1.2rem;
   .content {
-    padding-top: 2rem;
-    padding-bottom: 2rem;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+  @include mixins.sm {
+    font-size: 1.6rem;
+    .content {
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+    }
   }
 }

@@ -1,5 +1,5 @@
-import { FC } from "react";
-import { Pagination } from "swiper";
+import { useRef, FC } from "react";
+import { Pagination, Navigation } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "./Slider.scss";
 
@@ -16,11 +16,15 @@ export type SliderProp = {
 };
 
 const Slider: FC<SliderProp> = ({ items }) => {
+  const prevRef = useRef(null);
+  const nextRef = useRef(null);
+
   return (
     <Swiper
-      modules={[Pagination]}
+      modules={[Pagination, Navigation]}
       slidesPerView={1}
       pagination={{ clickable: true }}
+      navigation={{ prevEl: prevRef.current, nextEl: nextRef.current }}
       className="swiperSlider"
     >
       {items.map(({ bannerImageUrl, bannerImageAlt, id }: BannerItems) => (
@@ -32,6 +36,12 @@ const Slider: FC<SliderProp> = ({ items }) => {
           />
         </SwiperSlide>
       ))}
+      <div ref={prevRef} className="swiper-button-prev">
+        PREV
+      </div>
+      <div ref={nextRef} className="swiper-button-next">
+        NEXT
+      </div>
     </Swiper>
   );
 };

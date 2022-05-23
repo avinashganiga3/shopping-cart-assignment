@@ -1,13 +1,37 @@
+@use "../../styles/mixins";
 .productsPage {
   display: flex;
+  flex-wrap: wrap;
+  min-height: 80vh;
   .categories {
-    min-width: 20%;
+    min-width: 100%;
   }
   .products {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(1, 1fr);
     row-gap: 1.6rem;
     flex: 1;
-    padding: 0 0 1.6rem 1.6rem;
+  }
+  @include mixins.md {
+    .categories {
+      min-width: 25%;
+    }
+    .products {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      row-gap: 1.6rem;
+      flex: 1;
+      padding: 0 0 1.6rem 1.6rem;
+      align-items: self-start;
+    }
+  }
+
+  @include mixins.lg {
+    .categories {
+      min-width: 20%;
+    }
+    .products {
+      grid-template-columns: repeat(4, 1fr);
+    }
   }
 }

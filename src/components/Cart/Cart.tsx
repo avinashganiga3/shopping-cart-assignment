@@ -1,22 +1,22 @@
-import { useState } from "react";
 import CartItems from "../CartItems";
 import { ReactComponent as CartIcon } from "../../assets/images/cart.svg";
 import styles from "./Cart.module.scss";
+import useCartContext from "../../context/CartContext/useCartContext";
 
 const Cart = () => {
-  const [cartOpen, setCartOpen] = useState<Boolean>(true);
+  const { totalItems, toggleCartOpen, isCartOpen } = useCartContext();
 
-  const toggle = () => setCartOpen((open) => !open);
+  const toggle = () => toggleCartOpen(!isCartOpen);
 
   return (
     <div className={styles.cartBlock}>
       <button className={styles.cart} onClick={toggle}>
         <CartIcon fill="#be2857" width="20px" />
-        <div className={styles.cartCount}>{0} items</div>
+        <div className={styles.cartCount}>{totalItems} items</div>
       </button>
-      {cartOpen && (
+      {isCartOpen && (
         <div className={styles.cartModal}>
-          <CartItems onClose={toggle} />
+          <CartItems />
         </div>
       )}
     </div>

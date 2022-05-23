@@ -1,4 +1,5 @@
 @use "./colors";
+@use "./breakpoints";
 
 @mixin nav {
   ul {
@@ -8,7 +9,6 @@
     padding: 0;
     a {
       text-decoration: none;
-      margin-left: 1.6rem;
       color: colors.$black;
     }
   }
@@ -19,4 +19,46 @@
   border: none;
   padding: 0;
   cursor: pointer;
+}
+
+// Small devices
+@mixin sm {
+  @media (min-width: #{breakpoints.$screen-sm-min}) {
+    @content;
+  }
+}
+
+// Medium devices
+@mixin md {
+  @media (min-width: #{breakpoints.$screen-md-min}) {
+    @content;
+  }
+}
+
+// Large devices
+@mixin lg {
+  @media (min-width: #{breakpoints.$screen-lg-min}) {
+    @content;
+  }
+}
+
+// Extra large devices
+@mixin xl {
+  @media (min-width: #{breakpoints.$screen-xl-min}) {
+    @content;
+  }
+}
+
+// Extra Extra large devices
+@mixin xxl {
+  @media (min-width: #{breakpoints.$screen-xxl-min}) {
+    @content;
+  }
+}
+
+// Custom devices
+@mixin rwd($screen) {
+  @media (min-width: ($screen + "px")) {
+    @content;
+  }
 }

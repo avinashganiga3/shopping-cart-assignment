@@ -7,13 +7,21 @@
   flex: 1;
   .nav {
     @include mixins.nav;
-    padding-left: 10%;
+    padding-left: 1rem;
+    font-size: 1.2rem;
     font-weight: 600;
     align-self: center;
     li a {
-      color: colors.$gray;
-      margin-left: 0;
-      margin-right: 3rem;
+      margin-right: 1rem;
+    }
+  }
+  @include mixins.sm {
+    .nav {
+      padding-left: 10%;
+      font-size: 1.6rem;
+      li a {
+        margin-right: 3rem;
+      }
     }
   }
 }

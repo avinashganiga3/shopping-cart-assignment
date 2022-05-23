@@ -1,11 +1,14 @@
 @use "../../styles/colors";
+@use "../../styles/mixins";
+
 .product {
   display: grid;
   padding: 1rem 0;
-  margin: 0 2rem;
+  margin: 0 0.1rem;
   border-bottom: 1px dotted;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   position: relative;
+  column-gap: 0.5rem;
   &::after {
     content: "";
     top: 10%;
@@ -16,37 +19,97 @@
     background: colors.$lightGray;
     opacity: 0.5;
     position: absolute;
+    display: none;
   }
   .title {
     margin: 2rem 0;
-    font-size: 2rem;
+    font-size: 1.6rem;
     grid-column: span 2 / span 2;
-    height: 72px;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
   }
   .productImage {
     width: 100%;
     height: auto;
-    grid-column: span 2 / span 2;
+    grid-column: span 1 / span 2;
+    grid-row: span 2 / span 2;
+    align-self: center;
   }
   .description {
     background: colors.$lGreen;
     padding: 1rem;
     margin: 0;
     margin-bottom: 1.6rem;
-    grid-column: span 2 / span 2;
-    height: 86px;
-    display: -webkit-box;
-    -webkit-line-clamp: 4;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    grid-column: span 1 / span 2;
   }
   .price {
     align-self: center;
+    display: none;
+  }
+  .priceButton {
+    align-self: self-end;
+    .priceInsideBtn {
+      display: inline-block;
+    }
+  }
+  @include mixins.md {
+    margin: 0 2rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    &::after {
+      display: block;
+    }
+    .title {
+      font-size: 2rem;
+      height: 50px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .description {
+      height: 140px;
+      display: -webkit-box;
+      -webkit-line-clamp: 7;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .priceButton {
+      grid-column: span 2 / span 2;
+    }
+  }
+  @include mixins.lg {
+    margin: 0 2rem;
+    &:nth-child(2n)::after {
+      display: block;
+    }
+    .title {
+      height: 72px;
+      -webkit-line-clamp: 2;
+    }
+    .description {
+      grid-column: span 2 / span 2;
+      height: 86px;
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-top: 1rem;
+    }
+    .productImage {
+      width: 100%;
+      height: auto;
+      grid-column: span 2 / span 2;
+    }
+    .price {
+      display: block;
+    }
+    .priceButton {
+      grid-column: span 1 / span 2;
+      .priceInsideBtn {
+        display: none;
+      }
+    }
   }
 }

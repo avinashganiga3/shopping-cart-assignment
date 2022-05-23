@@ -1,9 +1,24 @@
+import { useNavigate } from "react-router-dom";
+import useUserContext from "../../context/UserContext/useUserContext";
 import { StringObject } from "../../types";
 import AuthPageLayout from "../AuthPageLayout";
 
+export type SignUpT = {
+  firstName: string;
+  lastName?: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+};
+
 const SignUp = () => {
+  const { signUpUser } = useUserContext();
+  const navigate = useNavigate();
   const submitHandler = (value: StringObject) => {
     console.log("sign up", value);
+    const { firstName, lastName } = value as SignUpT;
+    signUpUser({ firstName, lastName });
+    navigate("/");
   };
 
   return (
@@ -54,6 +69,7 @@ const initialFormData = {
       pattern: "Enter Valid Email Address",
     },
   },
+  // "(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{6,}",
   password: {
     name: "password",
     id: "password",
@@ -62,8 +78,7 @@ const initialFormData = {
     type: "password",
     value: "",
     required: true,
-    pattern:
-      "(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}",
+    pattern: "(?=.*[a-zA-Z])(?=.*\\d)[A-Za-z\\d@$!%*?&]{5,}",
     errorMsg: {
       required: "Password cannot be empty",
       pattern:
