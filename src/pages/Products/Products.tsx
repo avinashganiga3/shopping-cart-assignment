@@ -10,11 +10,11 @@ import styles from "./Products.module.scss";
 
 const Products = () => {
   const { categories } = useCategoryContext();
-  const [searchParams] = useSearchParams();
-  const selectedCategory = searchParams.get("category");
 
+  const [searchParams] = useSearchParams();
   const [products, setProducts] = useState<ProductT[]>([]);
   const [filteredProducts, setFilteredProducts] = useState<ProductT[]>([]);
+  const selectedCategory = searchParams.get("category");
 
   useEffect(() => {
     const callAPI = async () => {

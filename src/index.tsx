@@ -4,7 +4,6 @@ import App from "./App/App";
 import { BrowserRouter } from "react-router-dom";
 import { UserProvider } from "./context/UserContext";
 import { CartProvider } from "./context/CartContext";
-import reportWebVitals from "./reportWebVitals";
 import "./index.scss";
 import { CategoryProvider } from "./context/CategoryContext";
 
@@ -22,8 +21,3 @@ root.render(
     </BrowserRouter>
   </React.StrictMode>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();

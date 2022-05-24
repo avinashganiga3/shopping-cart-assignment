@@ -109,9 +109,8 @@ const Form: FC<FormProps> = ({
       }
     );
 
-    //if form is not valid and show error in input field by setting input field touched to true
+    //if form is not valid and show error in untouched input field by setting input field touched to true
     if (!fData.isValid) {
-      console.log("invalid", fData);
       setFormData((pData) => {
         return Object.keys(pData).reduce((aData, key) => {
           aData[key] = { ...pData[key], touched: true };

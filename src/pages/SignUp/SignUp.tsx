@@ -78,7 +78,7 @@ const initialFormData = {
     type: "password",
     value: "",
     required: true,
-    pattern: "(?=.*[a-zA-Z])(?=.*\\d)[A-Za-z\\d@$!%*?&]{5,}",
+    pattern: "^(?!.* )(?=.*[a-zA-Z])(?=.*\\d)[A-Za-z\\d@$!%*?&]{5,}$",
     errorMsg: {
       required: "Password cannot be empty",
       pattern:

@@ -25,10 +25,13 @@ const InputText: FC<InputTextProps> = ({
   touched = false,
   ...inputProps
 }) => {
+  const { id } = inputProps;
   return (
     <div className={styles.inputGroup}>
       <input
         {...inputProps}
+        aria-describedby={`error-${id}`}
+        aria-invalid={!valid && touched}
         className={cn(styles.inputText, {
           [styles.hasValue]: inputProps.value,
           [styles.hasError]: !valid && touched,
@@ -38,7 +41,7 @@ const InputText: FC<InputTextProps> = ({
         {label}
       </label>
       {!valid && touched && (
-        <div className={styles.errorText}>
+        <div className={styles.errorText} id={`error-${id}`} aria-live="polite">
           {errorMsg[errorType] || errorMsg[ErrorTypes.Default]}
         </div>
       )}

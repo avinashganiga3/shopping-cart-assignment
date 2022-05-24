@@ -4,8 +4,6 @@ import userReducer from "./userReducer";
 import locaStore from "../../utils/localStore";
 import { UserProviderProps, UserState, Dispatch } from "./types";
 
-console.log(locaStore);
-
 export const UserContext = createContext<
   { state: UserState; dispatch: Dispatch } | undefined
 >(undefined);

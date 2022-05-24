@@ -41,13 +41,26 @@ const CategoryList: FC<CategoryListProps> = ({
 
   return (
     <aside className={className}>
-      <div className={styles.selectedValue} onClick={() => setOpen((o) => !o)}>
+      {/* Show as drop down in mobile */}
+      <div
+        className={styles.selectedValue}
+        onClick={() => setOpen((o) => !o)}
+        aria-haspopup="true"
+        aria-expanded={open}
+      >
         <div>{selectedCategory.name || "Select Category"}</div>
         <div className={cn(styles.icon, { [styles.rotate]: open })}>
           &#x022C1;
         </div>
       </div>
-      <ul className={cn(styles.list, { [styles.active]: open })}>
+      <div className="srOnly" id="categoryList">
+        Category List
+      </div>
+
+      <ul
+        className={cn(styles.list, { [styles.active]: open })}
+        aria-labelledby="categoryList"
+      >
         {categories.map((category) => (
           <li
             key={category.id}

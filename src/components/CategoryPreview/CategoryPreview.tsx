@@ -20,6 +20,7 @@ const CategoryPreview: FC<CategoryPreviewProps> = ({ category, index = 0 }) => {
           className={cn(styles.categoryImage, {
             [styles.imageLeft]: index % 2,
           })}
+          loading="lazy"
         />
       )}
       <div className={styles.categoryDetails}>
@@ -27,7 +28,6 @@ const CategoryPreview: FC<CategoryPreviewProps> = ({ category, index = 0 }) => {
         <p className={styles.desc}>{description}</p>
         <LinkButton
           className={styles.button}
-          tabIndex={-1}
           to={`/products?category=${id}`}
         >{`Explore ${key}`}</LinkButton>
       </div>

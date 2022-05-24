@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, memo } from "react";
 import { postData } from "../../api";
 import { apiUrls } from "../../api/constants";
 import useCartContext from "../../context/CartContext/useCartContext";
@@ -25,9 +25,29 @@ type CartPostDataT = {
 export type ProductProps = {
   product: ProductT;
 };
-const Product: FC<ProductProps> = ({ product }) => {
-  const { addToCart } = useCartContext();
 
+const Product: FC<ProductProps> = ({ product }) => {
+  const { name, imageURL, description, price } = product;
+
+  return (
+    <div className={styles.product}>
+      <h2 className={styles.title}>{name}</h2>
+      <img
+        src={imageURL}
+        alt={`product ${name}`}
+        className={styles.productImage}
+      />
+      <p className={styles.description}>{description}</p>
+      <Price className={styles.price} price={price}>
+        MRP
+      </Price>
+      <ProductBuyBtn product={product} />
+    </div>
+  );
+};
+
+const ProductBuyBtn: FC<ProductProps> = ({ product }) => {
+  const { addToCart } = useCartContext();
   const handleAddCart = async () => {
     try {
       const res = await postData<CartPostDataT, ResposeT>(apiUrls.addToCart, {
@@ -41,27 +61,14 @@ const Product: FC<ProductProps> = ({ product }) => {
     }
   };
 
-  const { name, imageURL, description, price } = product;
   return (
-    <div className={styles.product}>
-      <h2 className={styles.title}>{name}</h2>
-      <img
-        src={imageURL}
-        alt={`product ${name}`}
-        className={styles.productImage}
-      />
-      <p className={styles.description}>{description}</p>
-      <Price className={styles.price} price={price}>
-        MRP
+    <Button className={styles.priceButton} onClick={handleAddCart}>
+      Buy Now{" "}
+      <Price className={styles.priceInsideBtn} price={product.price}>
+        @
       </Price>
-      <Button className={styles.priceButton} onClick={handleAddCart}>
-        Buy Now{" "}
-        <Price className={styles.priceInsideBtn} price={price}>
-          @
-        </Price>
-      </Button>
-    </div>
+    </Button>
   );
 };
 
-export default Product;
+export default memo(Product);

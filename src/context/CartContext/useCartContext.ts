@@ -33,7 +33,7 @@ const useCartContext = () => {
   );
 
   const toggleCartOpen = useCallback(
-    (open: Boolean) => {
+    (open: boolean) => {
       dispatch(openCartAction(open));
     },
     [dispatch]

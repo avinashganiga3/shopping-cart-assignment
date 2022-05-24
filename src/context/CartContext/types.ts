@@ -18,7 +18,7 @@ export type CartState = {
   cartItems: CartItem[];
   checkoutPrice: number;
   totalItems: number;
-  isCartOpen: Boolean;
+  isCartOpen: boolean;
 };
 
 export type UpdateCartPayload = {
@@ -44,7 +44,7 @@ export type UpdateCartAction = ActionWithPayload<
 
 export type OpenCartAction = ActionWithPayload<
   CartActionType.OpenCart,
-  Boolean
+  boolean
 >;
 
 export type ActionsT =

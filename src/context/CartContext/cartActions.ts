@@ -33,7 +33,7 @@ export const updateCartAction = (
   payload: UpdateCartPayload
 ): UpdateCartAction => createAction(CartActionType.UpdateCart, payload);
 
-export const openCartAction = (payload: Boolean): OpenCartAction =>
+export const openCartAction = (payload: boolean): OpenCartAction =>
   createAction(CartActionType.OpenCart, payload);
 
 export const addToCart = (product: ProductT, cartItems: CartItem[]) => {

@@ -1,5 +1,5 @@
 import { useRef, FC } from "react";
-import { Pagination, Navigation } from "swiper";
+import { Pagination, Navigation, Keyboard } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "./Slider.scss";
 
@@ -21,11 +21,17 @@ const Slider: FC<SliderProp> = ({ items }) => {
 
   return (
     <Swiper
-      modules={[Pagination, Navigation]}
+      modules={[Pagination, Navigation, Keyboard]}
       slidesPerView={1}
       pagination={{ clickable: true }}
       navigation={{ prevEl: prevRef.current, nextEl: nextRef.current }}
       className="swiperSlider"
+      a11y={{
+        prevSlideMessage: "Previous slide",
+        nextSlideMessage: "Next slide",
+        enabled: true,
+      }}
+      keyboard={{ enabled: true, onlyInViewport: true }}
     >
       {items.map(({ bannerImageUrl, bannerImageAlt, id }: BannerItems) => (
         <SwiperSlide key={id}>
@@ -36,12 +42,12 @@ const Slider: FC<SliderProp> = ({ items }) => {
           />
         </SwiperSlide>
       ))}
-      <div ref={prevRef} className="swiper-button-prev">
+      <button ref={prevRef} className="swiper-button-prev">
         PREV
-      </div>
-      <div ref={nextRef} className="swiper-button-next">
+      </button>
+      <button ref={nextRef} className="swiper-button-next">
         NEXT
-      </div>
+      </button>
     </Swiper>
   );
 };

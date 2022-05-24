@@ -1,7 +1,6 @@
 import { CategoryState, ActionsT, CategoryActionType } from "./types";
 
 const categoryReducer = (state: CategoryState, action: ActionsT) => {
-  console.log(action);
   switch (action.type) {
     case CategoryActionType.AddCategories: {
       return { ...state, categories: [...action.payload], loading: false };

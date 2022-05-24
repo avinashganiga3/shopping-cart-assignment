@@ -1,9 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import CartItems from "../CartItems";
 import { ReactComponent as CartIcon } from "../../assets/images/cart.svg";
-import styles from "./Cart.module.scss";
 import { detectMob } from "../../utils/helper";
 import useCartContext from "../../context/CartContext/useCartContext";
+import styles from "./Cart.module.scss";
+import Modal from "../Modal";
 
 const Cart = () => {
   const { totalItems, toggleCartOpen, isCartOpen } = useCartContext();
@@ -23,14 +24,10 @@ const Cart = () => {
         <CartIcon fill="#be2857" width="20px" />
         <div className={styles.cartCount}>{totalItems} items</div>
       </button>
-      {isCartOpen && (
-        <>
-          <div className={styles.backDrop} onClick={toggle} />
-          <div className={styles.cartModal}>
-            <CartItems />
-          </div>
-        </>
-      )}
+
+      <Modal active={isCartOpen} toggle={toggle}>
+        <CartItems />
+      </Modal>
     </div>
   );
 };

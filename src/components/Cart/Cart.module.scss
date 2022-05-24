@@ -15,21 +15,3 @@
     padding: 0 1rem;
   }
 }
-.cartModal {
-  position: absolute;
-  width: 400px;
-  height: 70vh;
-  z-index: 3;
-  top: 100%;
-  right: 0;
-}
-.backDrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(colors.$black, 0.5);
-  z-index: 2;
-  cursor: pointer;
-}
