@@ -1,4 +1,6 @@
 @use "../../styles/colors";
+@use "../../styles/mixins";
+
 .button {
   font-family: "Dosis", sans-serif;
   width: 100%;
@@ -9,8 +11,22 @@
   cursor: pointer;
   color: colors.$white;
   background: colors.$darkRed;
-  &:hover {
+  &:disabled {
     background: colors.$mGray;
-    color: colors.$black;
+  }
+  .loader {
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    justify-content: center;
+    margin: auto;
+    border-width: 2px;
+    border-top-width: 2px;
+  }
+  @include mixins.lg {
+    &:hover {
+      background: colors.$mGray;
+      color: colors.$black;
+    }
   }
 }

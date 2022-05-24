@@ -1,5 +1,6 @@
 import { ButtonHTMLAttributes, FC } from "react";
 import cn from "classnames";
+import { LoaderSpinner } from "../Loader/Loader";
 import styles from "./Button.module.scss";
 
 type ButtonProps = {
@@ -19,7 +20,7 @@ const Button: FC<ButtonProps> = ({
       disabled={disabled || loading}
       {...buttonProps}
     >
-      {children}
+      {loading ? <LoaderSpinner className={styles.loader} /> : children}
     </button>
   );
 };

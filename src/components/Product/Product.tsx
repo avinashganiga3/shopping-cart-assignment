@@ -1,4 +1,4 @@
-import { FC, memo } from "react";
+import { FC, memo, useState } from "react";
 import { postData } from "../../api";
 import { apiUrls } from "../../api/constants";
 import useCartContext from "../../context/CartContext/useCartContext";
@@ -48,7 +48,10 @@ const Product: FC<ProductProps> = ({ product }) => {
 
 const ProductBuyBtn: FC<ProductProps> = ({ product }) => {
   const { addToCart } = useCartContext();
+  const [loading, setLoading] = useState(false);
+
   const handleAddCart = async () => {
+    setLoading(true);
     try {
       const res = await postData<CartPostDataT, ResposeT>(apiUrls.addToCart, {
         id: product.id,
@@ -58,12 +61,18 @@ const ProductBuyBtn: FC<ProductProps> = ({ product }) => {
       }
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <Button className={styles.priceButton} onClick={handleAddCart}>
-      Buy Now{" "}
+    <Button
+      className={styles.priceButton}
+      onClick={handleAddCart}
+      loading={loading}
+    >
+      Buy Now
       <Price className={styles.priceInsideBtn} price={product.price}>
         @
       </Price>

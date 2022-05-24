@@ -7,22 +7,27 @@ import { getData } from "../../api";
 import { apiUrls } from "../../api/constants";
 import useCategoryContext from "../../context/CategoryContext/useCategoryContext";
 import styles from "./Products.module.scss";
+import Loader from "../../components/Loader";
 
 const Products = () => {
-  const { categories } = useCategoryContext();
-
+  const { categories, loading } = useCategoryContext();
   const [searchParams] = useSearchParams();
   const [products, setProducts] = useState<ProductT[]>([]);
+  const [productsLoading, setProductsLoading] = useState(false);
+
   const [filteredProducts, setFilteredProducts] = useState<ProductT[]>([]);
   const selectedCategory = searchParams.get("category");
 
   useEffect(() => {
     const callAPI = async () => {
+      setProductsLoading(true);
       try {
         const res = await getData<ProductT[]>(apiUrls.products);
         setProducts(res);
       } catch (error) {
         console.log("something went wrong", error);
+      } finally {
+        setProductsLoading(false);
       }
     };
     callAPI();
@@ -40,6 +45,7 @@ const Products = () => {
 
   return (
     <div className={cn(styles.productsPage, "container")}>
+      {(loading || productsLoading) && <Loader />}
       <CategoryList categories={categories} className={styles.categories} />
       <main className={styles.products}>
         {filteredProducts.map((product) => (

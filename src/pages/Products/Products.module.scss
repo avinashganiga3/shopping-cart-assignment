@@ -2,6 +2,7 @@
 .productsPage {
   display: flex;
   flex-wrap: wrap;
+  @include mixins.pageHeight;
   .categories {
     min-width: 100%;
   }

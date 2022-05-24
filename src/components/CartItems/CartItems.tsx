@@ -30,7 +30,7 @@ const CartItems: FC<CartItemsProps> = ({ inPage = false }) => {
         <h2 className={styles.name}>
           My Cart <span>(1 item)</span>
         </h2>
-        <button className={styles.close} onClick={closeCart}>
+        <button className={styles.close} onClick={closeCart} aria-label="Close">
           &#x02A2F;
         </button>
       </div>

@@ -62,3 +62,10 @@
     @content;
   }
 }
+
+@mixin pageHeight {
+  min-height: calc(100vh - 113px);
+  @include md {
+    min-height: calc(100vh - 160px);
+  }
+}

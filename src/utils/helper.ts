@@ -1,3 +1,3 @@
 export const detectMob = () => {
-  return window.innerWidth <= 830;
+  return window.innerWidth < 992;
 };

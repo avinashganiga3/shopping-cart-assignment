@@ -5,7 +5,7 @@
   background: colors.$lightBg;
   display: flex;
   flex-direction: column;
-  height: 100%;
+  @include mixins.pageHeight;
 
   .cartHeader {
     display: flex;
