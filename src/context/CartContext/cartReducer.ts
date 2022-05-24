@@ -12,6 +12,9 @@ const cartReducer = (state: CartState, action: ActionsT) => {
     case CartActionType.OpenCart: {
       return { ...state, isCartOpen: action.payload };
     }
+    case CartActionType.RemoveAllCartItem: {
+      return { ...state, cartItems: [], checkoutPrice: 0, totalItems: 0 };
+    }
     default: {
       throw new Error(`Unhandled action type: ${action["type"]}`);
     }

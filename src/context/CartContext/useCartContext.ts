@@ -4,7 +4,9 @@ import {
   addToCartAction,
   removeFromCartAction,
   openCartAction,
+  clearAllCartItemsAction,
 } from "./cartActions";
+import localStore from "../../utils/localStore";
 import { CartContext } from "./CartContext";
 
 const useCartContext = () => {
@@ -37,11 +39,17 @@ const useCartContext = () => {
     [dispatch]
   );
 
+  const clearAllCart = useCallback(() => {
+    dispatch(clearAllCartItemsAction());
+    localStore.setItem("cartItems", []);
+  }, [dispatch]);
+
   return {
     ...state,
     addToCart,
     removeFromCart,
     toggleCartOpen,
+    clearAllCart,
     dispatch,
   };
 };

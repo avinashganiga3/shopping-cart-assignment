@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:3001/",
+  baseURL: "/",
   timeout: 5000,
 });
 
@@ -11,6 +11,8 @@ export const getData = async <T>(url: string): Promise<T> => {
 };
 
 export const postData = async <D, T>(url: string, data: D): Promise<T> => {
-  const response = await axiosInstance.post(url, data);
+  //as api data are fetched directly from local fetch file post request get won't work
+  const response = await axiosInstance.get(url, data);
+  // const response = await axiosInstance.post(url, data);
   return response.data;
 };

@@ -1,3 +1,6 @@
+import { FC } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import cn from "classnames";
 import lowestPrice from "../../assets/images/lowest-price.png";
 import useCartContext from "../../context/CartContext/useCartContext";
 import Button from "../Button";
@@ -5,13 +8,24 @@ import CartItem from "../CartItem";
 import Price from "../Price/Price";
 import styles from "./CartItems.module.scss";
 
-const CartItems = () => {
+export type CartItemsProps = {
+  inPage?: Boolean;
+};
+
+const CartItems: FC<CartItemsProps> = ({ inPage = false }) => {
+  const location = useLocation();
+  const navigate = useNavigate();
   const { cartItems, checkoutPrice, toggleCartOpen } = useCartContext();
 
-  const closeCart = () => toggleCartOpen(false);
+  const closeCart = () => {
+    if (location.pathname === "/cart") {
+      navigate("/home");
+    }
+    toggleCartOpen(false);
+  };
 
   return (
-    <div className={styles.cartItems}>
+    <div className={cn(styles.cartItems, { [styles.inPage]: inPage })}>
       <div className={styles.cartHeader}>
         <h2 className={styles.name}>
           My Cart <span>(1 item)</span>

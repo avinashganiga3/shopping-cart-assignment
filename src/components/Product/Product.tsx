@@ -30,12 +30,12 @@ const Product: FC<ProductProps> = ({ product }) => {
 
   const handleAddCart = async () => {
     try {
-      // const res = await postData<CartPostDataT, ResposeT>(apiUrls.addToCart, {
-      //   id: product.id,
-      // });
-      // if (res.response === "Success") {
-      addToCart(product);
-      // }
+      const res = await postData<CartPostDataT, ResposeT>(apiUrls.addToCart, {
+        id: product.id,
+      });
+      if (res.response === "Success") {
+        addToCart(product);
+      }
     } catch (error) {
       console.log(error);
     }

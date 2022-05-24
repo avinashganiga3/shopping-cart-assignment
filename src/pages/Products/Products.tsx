@@ -1,17 +1,17 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import cn from "classnames";
-import { CategoryT } from "../../types";
 import CategoryList from "../../components/CategoryList";
 import Product, { ProductT } from "../../components/Product";
 import { getData } from "../../api";
 import { apiUrls } from "../../api/constants";
+import useCategoryContext from "../../context/CategoryContext/useCategoryContext";
 import styles from "./Products.module.scss";
 
 const Products = () => {
+  const { categories } = useCategoryContext();
   const [searchParams] = useSearchParams();
   const selectedCategory = searchParams.get("category");
-  const [categories, setCategories] = useState<CategoryT[]>([]);
 
   const [products, setProducts] = useState<ProductT[]>([]);
   const [filteredProducts, setFilteredProducts] = useState<ProductT[]>([]);
@@ -20,15 +20,12 @@ const Products = () => {
     const callAPI = async () => {
       try {
         const res = await getData<ProductT[]>(apiUrls.products);
-        const cat = await getData<CategoryT[]>(apiUrls.categories);
         setProducts(res);
-        setCategories(cat);
       } catch (error) {
         console.log("something went wrong", error);
       }
     };
     callAPI();
-    console.log("mounted");
   }, []);
 
   useEffect(() => {

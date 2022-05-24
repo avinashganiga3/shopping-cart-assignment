@@ -1,11 +1,12 @@
 import { ProductT } from "../../components/Product";
-import { ActionWithPayload } from "../../utils/createAction";
+import { ActionWithPayload, Action } from "../../utils/createAction";
 
 export enum CartActionType {
   AddToCart = "ADD_TO_CART",
   RemoveFromCart = "REMOVE_FROM_CART",
   UpdateCart = "UPDATE_CART",
   OpenCart = "OPEN_CART",
+  RemoveAllCartItem = "REMOVE_ALL_CART_ITEM",
 }
 
 export type CartItem = {
@@ -34,6 +35,8 @@ export type RemoveFromCartAction = ActionWithPayload<
   CartItem[]
 >;
 
+export type RemoveAllCartItemAction = Action<CartActionType.RemoveAllCartItem>;
+
 export type UpdateCartAction = ActionWithPayload<
   CartActionType.UpdateCart,
   UpdateCartPayload
@@ -48,6 +51,7 @@ export type ActionsT =
   | AddToCartAction
   | RemoveFromCartAction
   | UpdateCartAction
+  | RemoveAllCartItemAction
   | OpenCartAction;
 
 export type CartProviderProps = { children: React.ReactNode };

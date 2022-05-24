@@ -7,6 +7,7 @@ import {
   RemoveFromCartAction,
   UpdateCartAction,
   OpenCartAction,
+  RemoveAllCartItemAction,
 } from "./types";
 import { ProductT } from "../../components/Product";
 
@@ -24,6 +25,9 @@ export const removeFromCartAction = (
     CartActionType.RemoveFromCart,
     removeFromCart(payload, cartItems)
   );
+
+export const clearAllCartItemsAction = (): RemoveAllCartItemAction =>
+  createAction(CartActionType.RemoveAllCartItem);
 
 export const updateCartAction = (
   payload: UpdateCartPayload

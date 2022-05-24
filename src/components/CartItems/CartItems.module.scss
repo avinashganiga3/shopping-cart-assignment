@@ -6,6 +6,7 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+
   .cartHeader {
     display: flex;
     padding: 1.6rem;
@@ -29,6 +30,7 @@
       line-height: 0.5;
     }
   }
+
   .cartItemsList {
     padding-top: 1.6rem;
     overflow: auto;
@@ -86,6 +88,19 @@
       .cartEmptyDesc {
         margin: 0;
       }
+    }
+  }
+  &.inPage {
+    .cartHeader {
+      background: colors.$white;
+      color: colors.$black;
+      margin-top: 2rem;
+      .close {
+        display: none;
+      }
+    }
+    .cartEmptyBlock {
+      margin-top: 1rem;
     }
   }
 }

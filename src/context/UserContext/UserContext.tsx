@@ -1,7 +1,10 @@
 import { FC } from "react";
 import { createContext, useMemo, useReducer } from "react";
 import userReducer from "./userReducer";
+import locaStore from "../../utils/localStore";
 import { UserProviderProps, UserState, Dispatch } from "./types";
+
+console.log(locaStore);
 
 export const UserContext = createContext<
   { state: UserState; dispatch: Dispatch } | undefined
@@ -10,7 +13,7 @@ export const UserContext = createContext<
 const initialState = {
   firstName: "",
   lastName: "",
-  isLoggedIn: false,
+  isLoggedIn: locaStore.isLoggedIn,
 };
 
 export const UserProvider: FC<UserProviderProps> = ({ children }) => {

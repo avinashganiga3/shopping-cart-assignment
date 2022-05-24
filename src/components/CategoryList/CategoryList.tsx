@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import cn from "classnames";
-import { CategoryT } from "../../types";
+import { CategoryT } from "../../context/CategoryContext";
 import styles from "./CategoryList.module.scss";
 
 export type CategoryListProps = {

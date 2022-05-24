@@ -1,7 +1,7 @@
 import { FC } from "react";
 import cn from "classnames";
 import LinkButton from "../LinkButton";
-import { CategoryT } from "../../types";
+import { CategoryT } from "../../context/CategoryContext";
 import styles from "./CategoryPreview.module.scss";
 
 export type CategoryPreviewProps = {

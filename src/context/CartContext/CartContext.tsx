@@ -1,5 +1,6 @@
 import { FC, useEffect } from "react";
 import { createContext, useMemo, useReducer } from "react";
+import localStore from "../../utils/localStore";
 import { updateCartAction } from "./cartActions";
 import cartReducer from "./cartReducer";
 import {
@@ -14,7 +15,7 @@ export const CartContext = createContext<
 >(undefined);
 
 const initialState = {
-  cartItems: [],
+  cartItems: localStore.cartItems,
   checkoutPrice: 0,
   totalItems: 0,
   isCartOpen: false,
@@ -36,6 +37,7 @@ export const CartProvider: FC<CartProviderProps> = ({ children }) => {
       },
       { checkoutPrice: 0, totalItems: 0 } as UpdateCartPayload
     );
+    localStore.setItem("cartItems", cartItems);
     dispatch(updateCartAction(updateCartData));
   }, [dispatch, cartItems, totalItems]);
 
