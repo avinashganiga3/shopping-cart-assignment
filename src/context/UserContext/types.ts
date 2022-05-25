@@ -13,7 +13,7 @@ export type UserSignUpPayloadT = {
 export type UserState = {
   firstName: string;
   lastName?: string;
-  isLoggedIn: Boolean;
+  isLoggedIn: boolean;
 };
 
 export type SignUpAction = ActionWithPayload<
@@ -26,5 +26,8 @@ export type SignInAction = Action<UserActionType.SignInUser>;
 
 export type ActionsT = SignUpAction | SignOutAction | SignInAction;
 
-export type UserProviderProps = { children: React.ReactNode };
+export type UserProviderProps = {
+  children: React.ReactNode;
+  iState?: UserState;
+};
 export type Dispatch = (action: ActionsT) => void;

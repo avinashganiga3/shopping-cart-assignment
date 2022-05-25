@@ -8,15 +8,17 @@ export const UserContext = createContext<
   { state: UserState; dispatch: Dispatch } | undefined
 >(undefined);
 
-const initialState = {
+export const initialState = {
   firstName: "",
   lastName: "",
   isLoggedIn: locaStore.isLoggedIn,
 };
 
-export const UserProvider: FC<UserProviderProps> = ({ children }) => {
-  const [state, dispatch] = useReducer(userReducer, initialState);
-
+export const UserProvider: FC<UserProviderProps> = ({
+  children,
+  iState = initialState,
+}) => {
+  const [state, dispatch] = useReducer(userReducer, iState);
   const value = useMemo(() => ({ state, dispatch }), [state]);
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 };

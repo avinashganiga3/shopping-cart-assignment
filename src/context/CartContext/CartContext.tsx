@@ -14,19 +14,22 @@ export const CartContext = createContext<
   { state: CartState; dispatch: Dispatch } | undefined
 >(undefined);
 
-const initialState = {
+export const initialState = {
   cartItems: localStore.cartItems,
   checkoutPrice: 0,
   totalItems: 0,
   isCartOpen: false,
 };
 
-export const CartProvider: FC<CartProviderProps> = ({ children }) => {
-  const [state, dispatch] = useReducer(cartReducer, initialState);
-  const { cartItems, totalItems } = state;
+export const CartProvider: FC<CartProviderProps> = ({
+  children,
+  iCartState = initialState,
+}) => {
+  const [state, dispatch] = useReducer(cartReducer, iCartState);
+  const { cartItems } = state;
 
   useEffect(() => {
-    if (cartItems.length === 0 && !totalItems) {
+    if (cartItems.length === 0) {
       return;
     }
     const updateCartData = cartItems.reduce(
@@ -39,7 +42,7 @@ export const CartProvider: FC<CartProviderProps> = ({ children }) => {
     );
     localStore.setItem("cartItems", cartItems);
     dispatch(updateCartAction(updateCartData));
-  }, [dispatch, cartItems, totalItems]);
+  }, [dispatch, cartItems]);
 
   const value: any = useMemo(() => ({ state, dispatch }), [state]);
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;

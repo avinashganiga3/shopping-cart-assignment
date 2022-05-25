@@ -51,7 +51,9 @@ const Products = () => {
         {filteredProducts.map((product) => (
           <Product product={product} key={product.id} />
         ))}
-        {filteredProducts.length === 0 && <h2>No Products Found</h2>}
+        {filteredProducts.length === 0 && !productsLoading && (
+          <h2>No Products Found</h2>
+        )}
       </main>
     </div>
   );

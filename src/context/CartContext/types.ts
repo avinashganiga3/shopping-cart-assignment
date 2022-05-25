@@ -54,5 +54,8 @@ export type ActionsT =
   | RemoveAllCartItemAction
   | OpenCartAction;
 
-export type CartProviderProps = { children: React.ReactNode };
+export type CartProviderProps = {
+  children: React.ReactNode;
+  iCartState?: CartState;
+};
 export type Dispatch = (action: ActionsT) => void;
