@@ -32,11 +32,9 @@ const Product: FC<ProductProps> = ({ product }) => {
   return (
     <div className={styles.product}>
       <h2 className={styles.title}>{name}</h2>
-      <img
-        src={imageURL}
-        alt={`product ${name}`}
-        className={styles.productImage}
-      />
+      <div className={styles.productImage}>
+        <img src={imageURL} alt={`product ${name}`} className="imageAbsolute" />
+      </div>
       <p className={styles.description}>{description}</p>
       <Price className={styles.price} price={price}>
         MRP

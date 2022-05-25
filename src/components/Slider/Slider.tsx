@@ -25,7 +25,7 @@ const Slider: FC<SliderProp> = ({ items }) => {
       slidesPerView={1}
       pagination={{ clickable: true }}
       navigation={{ prevEl: prevRef.current, nextEl: nextRef.current }}
-      className="swiperSlider"
+      className="swiper-slider"
       a11y={{
         prevSlideMessage: "Previous slide",
         nextSlideMessage: "Next slide",
@@ -38,7 +38,7 @@ const Slider: FC<SliderProp> = ({ items }) => {
           <img
             src={bannerImageUrl}
             alt={bannerImageAlt}
-            className="swiperImage"
+            className="imageAbsolute"
           />
         </SwiperSlide>
       ))}

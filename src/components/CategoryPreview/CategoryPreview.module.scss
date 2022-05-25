@@ -4,7 +4,9 @@
   padding: 4rem 1rem;
   align-items: center;
   .categoryImage {
-    max-width: 40%;
+    position: relative;
+    width: 40%;
+    padding-top: 25%;
     &.imageLeft {
       order: 2;
     }
@@ -25,7 +27,7 @@
   @include mixins.lg {
     padding: 4rem 0;
     .categoryImage {
-      max-width: 35%;
+      width: 35%;
     }
     .categoryDetails {
       .title {

@@ -4,7 +4,7 @@
 @import "swiper/css/navigation";
 @import "swiper/css/pagination";
 
-.swiperSlider {
+.swiper-slider {
   padding-bottom: 30px;
   &::before {
     content: "";
@@ -18,9 +18,8 @@
     bottom: 25px;
     right: 0;
   }
-  .swiperImage {
-    width: 100%;
-    height: auto;
+  .swiper-slide {
+    padding-top: 25%;
   }
   .swiper-pagination {
     bottom: 0;

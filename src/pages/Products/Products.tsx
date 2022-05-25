@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { useSearchParams } from "react-router-dom";
 import cn from "classnames";
 import CategoryList from "../../components/CategoryList";
@@ -14,8 +14,6 @@ const Products = () => {
   const [searchParams] = useSearchParams();
   const [products, setProducts] = useState<ProductT[]>([]);
   const [productsLoading, setProductsLoading] = useState(false);
-
-  const [filteredProducts, setFilteredProducts] = useState<ProductT[]>([]);
   const selectedCategory = searchParams.get("category");
 
   useEffect(() => {
@@ -33,14 +31,12 @@ const Products = () => {
     callAPI();
   }, []);
 
-  useEffect(() => {
-    let fProducts = [];
-    if (!selectedCategory) {
-      fProducts = [...products];
-    } else {
+  const filteredProducts = useMemo(() => {
+    let fProducts = [...products];
+    if (selectedCategory) {
       fProducts = products.filter((cat) => cat.category === selectedCategory);
     }
-    setFilteredProducts(fProducts);
+    return fProducts;
   }, [selectedCategory, products]);
 
   return (

@@ -14,14 +14,18 @@ const CategoryPreview: FC<CategoryPreviewProps> = ({ category, index = 0 }) => {
   return (
     <div className={styles.category}>
       {imageUrl && (
-        <img
-          src={imageUrl}
-          alt={`${name} preview`}
+        <div
           className={cn(styles.categoryImage, {
             [styles.imageLeft]: index % 2,
           })}
-          loading="lazy"
-        />
+        >
+          <img
+            src={imageUrl}
+            alt={`${name} preview`}
+            loading="lazy"
+            className="imageAbsolute"
+          />
+        </div>
       )}
       <div className={styles.categoryDetails}>
         <h2 className={styles.title}>{name}</h2>
